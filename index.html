@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consigner une observation en une minute ?</title>
+<meta name="description" content="Enseignantes et enseignants du primaire : nous étudions une façon d'alléger la consignation des observations et des interventions.">
+<meta name="robots" content="noindex">
+
+<!-- Aperçu de lien (Facebook). [À COMPLÉTER] : remplacer par l'adresse GitHub Pages réelle. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:title" content="Et si consigner une observation prenait une minute ?">
+<meta property="og:description" content="Nous étudions une façon d'alléger la consignation des observations et des interventions. Ça prend 30 secondes.">
+<meta property="og:image" content="https://protheo.github.io/ges838-smoke-test-tp2-a2026/images/apercu-lien-1200x630.png">
+
+<style>
+  :root {
+    --papier: #FBF7F0;
+    --carte: #FFFFFF;
+    --encre: #1F2A44;
+    --encre-douce: #4A5570;
+    --corail: #E07A5F;
+    --corail-fonce: #C4603F;
+    --vert: #3D8A6E;
+    --bleu: #6C8EBF;
+    --trait: #E9E1D3;
+    --rayon: 14px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--papier) url("images/fond.svg") repeat;
+    color: var(--encre);
+    font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 560px; margin: 0 auto; padding: 24px 16px 40px; }
+  .ecran {
+    background: var(--carte);
+    border: 1px solid var(--trait);
+    border-radius: var(--rayon);
+    padding: 24px 20px;
+    box-shadow: 0 6px 24px rgba(31, 42, 68, .06);
+  }
+  .ecran[hidden] { display: none; }
+  .surtitre {
+    margin: 0 0 6px;
+    color: var(--vert);
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  h1, h2 { line-height: 1.2; margin: 0 0 14px; }
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.3rem; }
+  h3 { font-size: 1.05rem; margin: 22px 0 6px; }
+  p { margin: 0 0 14px; }
+  .doux { color: var(--encre-douce); }
+  .petit { font-size: .88rem; }
+  .illustration { display: block; width: 100%; max-width: 320px; height: auto; margin: 4px auto 18px; }
+
+  .bouton {
+    display: block;
+    width: 100%;
+    margin: 10px 0 0;
+    padding: 15px 18px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    font: inherit;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+  }
+  .bouton:focus-visible { outline: 3px solid var(--bleu); outline-offset: 2px; }
+  .principal { background: var(--corail); color: #fff; }
+  .principal:hover { background: var(--corail-fonce); }
+  .secondaire { background: #fff; color: var(--encre); border-color: var(--encre); }
+  .discret { background: transparent; color: var(--encre-douce); border-color: var(--trait); font-weight: 600; }
+  .bouton:disabled { opacity: .4; cursor: not-allowed; }
+
+  fieldset { border: 0; margin: 0 0 18px; padding: 0; }
+  legend { font-weight: 700; margin-bottom: 8px; padding: 0; }
+  .choix {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 11px 12px;
+    margin: 6px 0;
+    border: 1px solid var(--trait);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .choix:has(input:checked) { border-color: var(--vert); background: #F1F8F4; }
+  .choix input { margin-top: 4px; accent-color: var(--vert); }
+
+  .paire { display: flex; gap: 10px; }
+  .paire .bouton { margin-top: 0; }
+  .choisi { background: var(--vert) !important; color: #fff !important; border-color: var(--vert) !important; }
+
+  blockquote {
+    margin: 0 0 6px;
+    padding: 10px 14px;
+    border-left: 4px solid var(--vert);
+    background: #F6F3EC;
+    border-radius: 0 8px 8px 0;
+  }
+  footer { max-width: 560px; margin: 0 auto; padding: 0 16px 32px; color: var(--encre-douce); font-size: .82rem; text-align: center; }
+</style>
+
+<!-- Mesure d'audience anonyme, sans témoins. [À COMPLÉTER] : remplacer neoscope par le neoscope du site GoatCounter. -->
+<script data-goatcounter="https://neoscope.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body>
+<main>
+
+  <!-- ① Offre -->
+  <section class="ecran" id="ecran-1" aria-labelledby="t1">
+    <p class="surtitre">Enseignantes et enseignants du primaire</p>
+    <h1 id="t1" tabindex="-1">Et si consigner une observation prenait une minute ?</h1>
+
+    <svg class="illustration" viewBox="0 0 320 180" role="img" aria-label="Un cahier de notes cochées à côté d'un chronomètre indiquant une minute">
+      <rect x="22" y="22" width="150" height="140" rx="10" fill="#FFFFFF" stroke="#1F2A44" stroke-width="3"/>
+      <line x1="44" y1="22" x2="44" y2="162" stroke="#E07A5F" stroke-width="2"/>
+      <g stroke="#E9E1D3" stroke-width="2">
+        <line x1="54" y1="56" x2="156" y2="56"/>
+        <line x1="54" y1="88" x2="156" y2="88"/>
+        <line x1="54" y1="120" x2="156" y2="120"/>
+      </g>
+      <g fill="none" stroke="#3D8A6E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M56 48 l6 6 l12 -14"/>
+        <path d="M56 80 l6 6 l12 -14"/>
+        <path d="M56 112 l6 6 l12 -14"/>
+      </g>
+      <g stroke="#4A5570" stroke-width="4" stroke-linecap="round">
+        <line x1="84" y1="49" x2="140" y2="49"/>
+        <line x1="84" y1="81" x2="128" y2="81"/>
+        <line x1="84" y1="113" x2="146" y2="113"/>
+      </g>
+      <circle cx="238" cy="100" r="56" fill="#FFF4EF" stroke="#1F2A44" stroke-width="3"/>
+      <rect x="228" y="30" width="20" height="12" rx="3" fill="#1F2A44"/>
+      <path d="M238 100 L238 56 A44 44 0 0 1 276 78 Z" fill="#E07A5F" opacity=".85"/>
+      <circle cx="238" cy="100" r="5" fill="#1F2A44"/>
+      <text x="238" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1F2A44">1 min</text>
+    </svg>
+
+    <p>Observations, interventions, suivis : <strong>nous étudions une façon d'alléger cette tâche</strong> pour le personnel enseignant du primaire.</p>
+    <p class="doux petit">Projet de maîtrise pour le cours « Méthodologie d'ingénierie créative : pensée design », École de technologie supérieure (ÉTS). Rien à vendre.</p>
+    <button class="bouton principal" id="btn-essayer" type="button">Je veux l'essayer</button>
+  </section>
+
+  <!-- ② Geste -->
+  <section class="ecran" id="ecran-2" aria-labelledby="t2" hidden>
+    <h2 id="t2" tabindex="-1">Deux questions, et c'est tout</h2>
+
+    <fieldset>
+      <legend>Quel est votre rôle ?</legend>
+      <label class="choix"><input type="radio" name="role" value="presco"> Enseignante ou enseignant au préscolaire</label>
+      <label class="choix"><input type="radio" name="role" value="cycle1"> Enseignante ou enseignant au 1er cycle du primaire</label>
+      <label class="choix"><input type="radio" name="role" value="autre-niveau"> Enseignante ou enseignant à un autre niveau</label>
+      <label class="choix"><input type="radio" name="role" value="personnel"> Autre membre du personnel scolaire</label>
+      <label class="choix"><input type="radio" name="role" value="autre"> Autre</label>
+    </fieldset>
+
+    <p><strong>Voulez-vous essayer l'outil s'il voit le jour ?</strong></p>
+    <p class="doux petit" id="aide-role">Choisissez d'abord votre rôle.</p>
+    <button class="bouton principal" type="button" data-choix="oui-courriel" disabled>Oui, laisser mon courriel pour recevoir des nouvelles</button>
+    <button class="bouton secondaire" type="button" data-choix="oui" disabled>Oui, mais sans laisser mon courriel</button>
+    <button class="bouton discret" type="button" data-choix="non" disabled>Non merci</button>
+  </section>
+
+  <!-- ③ Divulgation -->
+  <section class="ecran" id="ecran-3" aria-labelledby="t3" hidden>
+    <h2 id="t3" tabindex="-1">Merci !</h2>
+    <p>Cette page fait partie d'une étude : projet de maîtrise pour le cours « Méthodologie d'ingénierie créative : pensée design », École de technologie supérieure (ÉTS).</p>
+    <p>L'outil n'existe pas encore : nous mesurons l'intérêt pour l'idée. C'est pourquoi <strong>nous ne vous demandons pas votre courriel</strong>. Aucune information personnelle n'a été recueillie.</p>
+
+    <h3>Connaissez-vous des collègues à qui un tel outil pourrait servir ?</h3>
+    <div class="paire">
+      <button class="bouton secondaire" type="button" data-collegues="oui">Oui</button>
+      <button class="bouton secondaire" type="button" data-collegues="non">Non</button>
+    </div>
+
+    <h3>Aidez-nous davantage</h3>
+    <p class="doux petit">Trois questions à choix, environ 30 secondes.</p>
+    <button class="bouton principal" id="btn-aider" type="button">Répondre aux 3 questions</button>
+    <button class="bouton discret" id="btn-terminer" type="button">Terminer</button>
+  </section>
+
+  <!-- ④ Questions complémentaires -->
+  <section class="ecran" id="ecran-4" aria-labelledby="t4" hidden>
+    <h2 id="t4" tabindex="-1">Trois questions complémentaires</h2>
+    <p class="doux petit">Toutes facultatives. Ne pensez à aucun élève en particulier : nous ne posons des questions que sur votre façon de travailler.</p>
+
+    <fieldset>
+      <legend>Aujourd'hui, comment consignez-vous vos observations et vos interventions ? <span class="doux petit">(plusieurs choix possibles)</span></legend>
+      <label class="choix"><input type="checkbox" name="outil" value="soi"> Dans le SOI de Mozaïk</label>
+      <label class="choix"><input type="checkbox" name="outil" value="mozaik"> Dans une autre fonction de Mozaïk</label>
+      <label class="choix"><input type="checkbox" name="outil" value="papier"> Sur papier ou dans un cahier</label>
+      <label class="choix"><input type="checkbox" name="outil" value="fichier"> Dans un fichier personnel</label>
+      <label class="choix"><input type="checkbox" name="outil" value="collegues"> Avec un outil fait entre collègues</label>
+      <label class="choix"><input type="checkbox" name="outil" value="pastoujours"> Je ne les consigne pas toujours</label>
+      <label class="choix"><input type="checkbox" name="outil" value="autre"> Autrement</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Avez-vous déjà créé, adapté ou cherché un moyen de simplifier cette tâche ?</legend>
+      <label class="choix"><input type="radio" name="contournement" value="utilise"> Oui, et je l'utilise</label>
+      <label class="choix"><input type="radio" name="contournement" value="abandonne"> Oui, mais je l'ai abandonné</label>
+      <label class="choix"><input type="radio" name="contournement" value="non"> Non</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>La semaine dernière, avez-vous reporté ou renoncé à consigner une observation faute de temps ?</legend>
+      <label class="choix"><input type="radio" name="report" value="oui"> Oui</label>
+      <label class="choix"><input type="radio" name="report" value="non"> Non</label>
+      <label class="choix"><input type="radio" name="report" value="nsp"> Je ne sais pas</label>
+    </fieldset>
+
+    <button class="bouton principal" id="btn-envoyer" type="button">Envoyer</button>
+  </section>
+
+  <!-- ⑤ Notre démarche -->
+  <section class="ecran" id="ecran-5" aria-labelledby="t5" hidden>
+    <h2 id="t5" tabindex="-1">Notre démarche</h2>
+    <p>Par souci de transparence, voici ce qui guide notre projet.</p>
+
+    <h3>Notre objectif</h3>
+    <blockquote>Favoriser l'intégration / l'inclusion scolaire des neuroatypiques / neurodivergents.</blockquote>
+
+    <h3>Notre vision</h3>
+    <blockquote>L'amélioration de l'intégration et de l'inclusion scolaire des neuroatypiques et neurodivergents sera possible en améliorant l'accessibilité aux services pédagogiques et de santé tout en améliorant l'accès aux services d'évaluations et de dépistages.</blockquote>
+
+    <h3>Notre hypothèse fondamentale</h3>
+    <blockquote>L'augmentation de la productivité et de l'efficacité du travail des adultes de première ligne permettra d'améliorer l'accès aux services pédagogiques et de santé chez les enfants à besoins particuliers tout en améliorant l'accès aux services d'évaluations et de dépistages précoces.</blockquote>
+
+    <p style="margin-top:18px"><strong>Votre réponse nous aide à vérifier une première partie de cette hypothèse. Merci !</strong></p>
+  </section>
+
+</main>
+
+<footer>
+  Projet de maîtrise pour le cours « Méthodologie d'ingénierie créative : pensée design », ÉTS.<br>
+  Aucune information personnelle n'est recueillie. Mesure d'audience anonyme, sans témoins (GoatCounter).
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  // Canal de provenance : ?c=meta, ?c=g-profs1, etc. Nettoyé ; « direct » par défaut.
+  var brut = new URLSearchParams(window.location.search).get('c') || '';
+  var canal = brut.toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 30) || 'direct';
+
+  // Comptes anonymes envoyés à GoatCounter. Aucune donnée personnelle, aucun stockage local.
+  // Les comptes émis avant le chargement du script attendent dans une file.
+  var enAttente = [];
+  function pret() {
+    var gc = window.goatcounter;
+    return gc && typeof gc.count === 'function' ? gc : null;
+  }
+  function vider() {
+    var gc = pret();
+    if (!gc) { return false; }
+    while (enAttente.length) {
+      var nom = enAttente.shift();
+      gc.count({ path: nom, title: nom, event: true });
+    }
+    return true;
+  }
+  function compter(nom) {
+    enAttente.push(nom);
+    vider();
+  }
+  var essais = 0;
+  var vidange = setInterval(function () {
+    essais += 1;
+    if (vider() || essais > 200) { clearInterval(vidange); }
+  }, 300);
+
+  function afficher(n) {
+    for (var i = 1; i <= 5; i += 1) {
+      document.getElementById('ecran-' + i).hidden = (i !== n);
+    }
+    window.scrollTo(0, 0);
+    var titre = document.getElementById('t' + n);
+    if (titre) { titre.focus({ preventScroll: true }); }
+  }
+
+  var etat = { role: null, fini: false };
+
+  // ① Offre
+  compter('visite-' + canal);
+  document.getElementById('btn-essayer').addEventListener('click', function () {
+    compter('bouton-' + canal);
+    afficher(2);
+  });
+
+  // ② Geste : le rôle débloque les trois choix.
+  var boutonsChoix = document.querySelectorAll('[data-choix]');
+  document.querySelectorAll('input[name="role"]').forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      etat.role = radio.value;
+      boutonsChoix.forEach(function (b) { b.disabled = false; });
+      document.getElementById('aide-role').hidden = true;
+    });
+  });
+  boutonsChoix.forEach(function (bouton) {
+    bouton.addEventListener('click', function () {
+      if (!etat.role) { return; }
+      boutonsChoix.forEach(function (b) { b.disabled = true; });
+      compter('reponse-' + canal + '-' + etat.role + '-' + bouton.dataset.choix);
+      afficher(3);
+    });
+  });
+
+  // ③ Divulgation : collègues (une seule réponse), puis compléments ou fin.
+  var boutonsCollegues = document.querySelectorAll('[data-collegues]');
+  boutonsCollegues.forEach(function (bouton) {
+    bouton.addEventListener('click', function () {
+      boutonsCollegues.forEach(function (b) { b.disabled = true; });
+      bouton.classList.add('choisi');
+      compter('collegues-' + canal + '-' + bouton.dataset.collegues);
+    });
+  });
+  document.getElementById('btn-aider').addEventListener('click', function () { afficher(4); });
+  document.getElementById('btn-terminer').addEventListener('click', terminer);
+
+  // ④ Compléments : un seul événement qui enneoscope les trois réponses.
+  function valeur(nom) {
+    var coche = document.querySelector('input[name="' + nom + '"]:checked');
+    return coche ? coche.value : 'na';
+  }
+  document.getElementById('btn-envoyer').addEventListener('click', function () {
+    var outils = Array.prototype.map.call(
+      document.querySelectorAll('input[name="outil"]:checked'),
+      function (c) { return c.value; }
+    ).sort().join('+') || 'na';
+    compter('complement-' + canal + '-' + (etat.role || 'na') + '-' + outils + '-' +
+      valeur('contournement') + '-' + valeur('report'));
+    terminer();
+  });
+
+  // ⑤ Notre démarche
+  function terminer() {
+    if (!etat.fini) {
+      etat.fini = true;
+      compter('fin-' + canal);
+    }
+    afficher(5);
+  }
+})();
+</script>
+</body>
+</html>
