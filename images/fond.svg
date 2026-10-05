@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 480 480">
   <!-- Motif de fond : papier ligné de cahier, quelques formes douces. Répété en tuile. -->
-  <rect width="480" height="480" fill="#FBF7F0"/>
-  <g stroke="#E9E1D3" stroke-width="1">
+  <rect width="480" height="480" fill="#FBF5EC"/>
+  <g stroke="#EFE4D4" stroke-width="1">
     <line x1="0" y1="40" x2="480" y2="40"/>
     <line x1="0" y1="80" x2="480" y2="80"/>
     <line x1="0" y1="120" x2="480" y2="120"/>
@@ -16,11 +16,11 @@
     <line x1="0" y1="480" x2="480" y2="480"/>
   </g>
   <g fill="none" stroke-linecap="round" stroke-width="3" opacity="0.35">
-    <path d="M60 96 l8 8 l16 -18" stroke="#3D8A6E"/>
-    <path d="M330 296 l8 8 l16 -18" stroke="#3D8A6E"/>
-    <circle cx="400" cy="70" r="10" stroke="#E07A5F"/>
-    <circle cx="150" cy="380" r="7" stroke="#6C8EBF"/>
-    <path d="M230 170 q12 -14 24 0 t24 0" stroke="#6C8EBF"/>
-    <path d="M40 300 l14 0 M47 293 l0 14" stroke="#E07A5F"/>
+    <path d="M60 96 l8 8 l16 -18" stroke="#DDA76E"/>
+    <path d="M330 296 l8 8 l16 -18" stroke="#DDA76E"/>
+    <circle cx="400" cy="70" r="10" stroke="#945C32"/>
+    <circle cx="150" cy="380" r="7" stroke="#1F3A8A"/>
+    <path d="M230 170 q12 -14 24 0 t24 0" stroke="#1F3A8A"/>
+    <path d="M40 300 l14 0 M47 293 l0 14" stroke="#945C32"/>
   </g>
 </svg>

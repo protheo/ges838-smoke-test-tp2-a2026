@@ -6,6 +6,7 @@
 <title>Consigner une observation en une minute ?</title>
 <meta name="description" content="Enseignantes et enseignants du primaire : nous étudions une façon d'alléger la consignation des observations et des interventions.">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#553B28">
 
 <!-- Aperçu de lien (Facebook). -->
 <meta property="og:type" content="website">
@@ -14,18 +15,24 @@
 <meta property="og:description" content="Nous étudions une façon d'alléger la consignation des observations et des interventions. Ça prend 30 secondes.">
 <meta property="og:image" content="https://protheo.github.io/ges838-smoke-test-tp2-a2026/images/apercu-lien-1200x630.png">
 
+<link rel="preload" as="image" href="images/entete-800x1000.webp" type="image/webp">
+
 <style>
+  /* Palette tirée de la photo de l'annonce : miel, bois, bleu du stylo. */
   :root {
-    --papier: #FBF7F0;
+    --papier: #FBF5EC;
     --carte: #FFFFFF;
-    --encre: #1F2A44;
-    --encre-douce: #4A5570;
-    --corail: #E07A5F;
-    --corail-fonce: #C4603F;
-    --vert: #3D8A6E;
-    --bleu: #6C8EBF;
-    --trait: #E9E1D3;
-    --rayon: 14px;
+    --encre: #2B2420;
+    --encre-douce: #5E5045;
+    --miel: #DDA76E;
+    --miel-pale: #F6E8D6;
+    --bois: #945C32;
+    --brun: #553B28;
+    --stylo: #1F3A8A;
+    --stylo-fonce: #172C6B;
+    --stylo-pale: #EEF2FB;
+    --trait: #EADFCF;
+    --rayon: 16px;
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
@@ -35,50 +42,92 @@
     color: var(--encre);
     font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
-  main { max-width: 560px; margin: 0 auto; padding: 24px 16px 40px; }
+  main { max-width: 560px; margin: 0 auto; padding: 16px 16px 32px; }
+
   .ecran {
     background: var(--carte);
     border: 1px solid var(--trait);
     border-radius: var(--rayon);
     padding: 24px 20px;
-    box-shadow: 0 6px 24px rgba(31, 42, 68, .06);
+    box-shadow: 0 8px 28px rgba(85, 59, 40, .10);
+    overflow: hidden;
   }
   .ecran[hidden] { display: none; }
+  .ecran.entree { animation: apparition .28s ease-out; }
+  @keyframes apparition {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* ① Offre : image pleine largeur, accroche en surimpression. */
+  #ecran-1 { padding: 0; }
+  .entete { position: relative; margin: 0; background: var(--brun); }
+  .entete img {
+    display: block;
+    width: 100%;
+    height: min(100vw, 440px);
+    object-fit: cover;
+    object-position: center 62%;
+  }
+  .entete::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(43, 28, 18, .82) 0%, rgba(43, 28, 18, .55) 34%, rgba(43, 28, 18, 0) 62%);
+  }
+  .entete-texte { position: absolute; z-index: 1; top: 0; left: 0; right: 0; padding: 20px 20px 0; color: #fff; }
+  .entete-texte .surtitre { color: var(--miel); }
+  .entete-texte h1 { color: #fff; text-shadow: 0 2px 12px rgba(0, 0, 0, .35); }
+  .corps { padding: 18px 20px 22px; }
+
   .surtitre {
     margin: 0 0 6px;
-    color: var(--vert);
-    font-size: .85rem;
+    color: var(--bois);
+    font-size: .82rem;
     font-weight: 700;
-    letter-spacing: .04em;
+    letter-spacing: .05em;
     text-transform: uppercase;
   }
-  h1, h2 { line-height: 1.2; margin: 0 0 14px; }
-  h1 { font-size: 1.75rem; }
+  h1, h2 { line-height: 1.18; margin: 0 0 14px; letter-spacing: -.01em; }
+  h1 { font-size: 1.85rem; }
   h2 { font-size: 1.3rem; }
   h3 { font-size: 1.05rem; margin: 22px 0 6px; }
   p { margin: 0 0 14px; }
   .doux { color: var(--encre-douce); }
   .petit { font-size: .88rem; }
-  .illustration { display: block; width: 100%; max-width: 320px; height: auto; margin: 4px auto 18px; }
 
   .bouton {
     display: block;
     width: 100%;
     margin: 10px 0 0;
-    padding: 15px 18px;
+    padding: 16px 18px;
     border: 2px solid transparent;
     border-radius: 12px;
     font: inherit;
     font-weight: 700;
     text-align: center;
     cursor: pointer;
+    transition: background-color .15s, transform .1s;
   }
-  .bouton:focus-visible { outline: 3px solid var(--bleu); outline-offset: 2px; }
-  .principal { background: var(--corail); color: #fff; }
-  .principal:hover { background: var(--corail-fonce); }
-  .secondaire { background: #fff; color: var(--encre); border-color: var(--encre); }
+  .bouton:active:not(:disabled) { transform: scale(.98); }
+  .bouton:focus-visible { outline: 3px solid var(--miel); outline-offset: 2px; }
+  .principal { background: var(--stylo); color: #fff; box-shadow: 0 4px 14px rgba(31, 58, 138, .28); }
+  .principal:hover:not(:disabled) { background: var(--stylo-fonce); }
+  .secondaire { background: #fff; color: var(--stylo); border-color: var(--stylo); }
   .discret { background: transparent; color: var(--encre-douce); border-color: var(--trait); font-weight: 600; }
-  .bouton:disabled { opacity: .4; cursor: not-allowed; }
+  .bouton:disabled { opacity: .4; cursor: not-allowed; box-shadow: none; }
+
+  /* ② Progression et chronomètre. */
+  .tete-geste { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .tete-geste h2 { margin: 0; }
+  .chrono { flex: 0 0 64px; width: 64px; height: 64px; }
+  .aiguille { transform-origin: 32px 36px; animation: tour 60s linear infinite; }
+  @keyframes tour { to { transform: rotate(360deg); } }
+  .progression { margin: 0 0 18px; }
+  .progression-etiquette { display: flex; justify-content: space-between; font-size: .85rem; color: var(--encre-douce); margin-bottom: 6px; }
+  .progression-barre { display: flex; gap: 6px; }
+  .progression-barre span { flex: 1; height: 6px; border-radius: 3px; background: var(--trait); transition: background-color .25s; }
+  .progression-barre span.fait { background: var(--miel); }
 
   fieldset { border: 0; margin: 0 0 18px; padding: 0; }
   legend { font-weight: 700; margin-bottom: 8px; padding: 0; }
@@ -86,27 +135,33 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    padding: 11px 12px;
+    padding: 12px;
     margin: 6px 0;
     border: 1px solid var(--trait);
     border-radius: 10px;
     cursor: pointer;
+    transition: border-color .15s, background-color .15s;
   }
-  .choix:has(input:checked) { border-color: var(--vert); background: #F1F8F4; }
-  .choix input { margin-top: 4px; accent-color: var(--vert); }
+  .choix:has(input:checked) { border-color: var(--stylo); background: var(--stylo-pale); }
+  .choix input { margin-top: 4px; accent-color: var(--stylo); }
 
   .paire { display: flex; gap: 10px; }
   .paire .bouton { margin-top: 0; }
-  .choisi { background: var(--vert) !important; color: #fff !important; border-color: var(--vert) !important; }
+  .choisi { background: var(--stylo) !important; color: #fff !important; border-color: var(--stylo) !important; }
 
   blockquote {
     margin: 0 0 6px;
     padding: 10px 14px;
-    border-left: 4px solid var(--vert);
-    background: #F6F3EC;
+    border-left: 4px solid var(--miel);
+    background: var(--miel-pale);
     border-radius: 0 8px 8px 0;
   }
   footer { max-width: 560px; margin: 0 auto; padding: 0 16px 32px; color: var(--encre-douce); font-size: .82rem; text-align: center; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ecran.entree, .aiguille { animation: none; }
+    .bouton, .choix, .progression-barre span { transition: none; }
+  }
 </style>
 
 <!-- Mesure d'audience anonyme, sans témoins (GoatCounter). -->
@@ -117,42 +172,47 @@
 
   <!-- ① Offre -->
   <section class="ecran" id="ecran-1" aria-labelledby="t1">
-    <p class="surtitre">Enseignantes et enseignants du primaire</p>
-    <h1 id="t1" tabindex="-1">Et si consigner une observation prenait une minute ?</h1>
+    <figure class="entete">
+      <picture>
+        <source srcset="images/entete-800x1000.webp" type="image/webp">
+        <img src="images/entete-800x1000.jpg" width="800" height="1000" fetchpriority="high"
+             alt="Une main écrit dans un cahier de notes sur un bureau de classe, à côté d'un chronomètre, dans la lumière de fin de journée.">
+      </picture>
+      <figcaption class="entete-texte">
+        <p class="surtitre">Enseignantes et enseignants du primaire</p>
+        <h1 id="t1" tabindex="-1">Et si consigner une observation prenait une minute ?</h1>
+      </figcaption>
+    </figure>
 
-    <svg class="illustration" viewBox="0 0 320 180" role="img" aria-label="Un cahier de notes cochées à côté d'un chronomètre indiquant une minute">
-      <rect x="22" y="22" width="150" height="140" rx="10" fill="#FFFFFF" stroke="#1F2A44" stroke-width="3"/>
-      <line x1="44" y1="22" x2="44" y2="162" stroke="#E07A5F" stroke-width="2"/>
-      <g stroke="#E9E1D3" stroke-width="2">
-        <line x1="54" y1="56" x2="156" y2="56"/>
-        <line x1="54" y1="88" x2="156" y2="88"/>
-        <line x1="54" y1="120" x2="156" y2="120"/>
-      </g>
-      <g fill="none" stroke="#3D8A6E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M56 48 l6 6 l12 -14"/>
-        <path d="M56 80 l6 6 l12 -14"/>
-        <path d="M56 112 l6 6 l12 -14"/>
-      </g>
-      <g stroke="#4A5570" stroke-width="4" stroke-linecap="round">
-        <line x1="84" y1="49" x2="140" y2="49"/>
-        <line x1="84" y1="81" x2="128" y2="81"/>
-        <line x1="84" y1="113" x2="146" y2="113"/>
-      </g>
-      <circle cx="238" cy="100" r="56" fill="#FFF4EF" stroke="#1F2A44" stroke-width="3"/>
-      <rect x="228" y="30" width="20" height="12" rx="3" fill="#1F2A44"/>
-      <path d="M238 100 L238 56 A44 44 0 0 1 276 78 Z" fill="#E07A5F" opacity=".85"/>
-      <circle cx="238" cy="100" r="5" fill="#1F2A44"/>
-      <text x="238" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#1F2A44">1 min</text>
-    </svg>
-
-    <p>Observations, interventions, suivis : <strong>nous étudions une façon d'alléger cette tâche</strong> pour le personnel enseignant du primaire.</p>
-    <p class="doux petit">Projet de maîtrise pour le cours « Méthodologie d'ingénierie créative : pensée design », École de technologie supérieure (ÉTS). Rien à vendre.</p>
-    <button class="bouton principal" id="btn-essayer" type="button">Je veux l'essayer</button>
+    <div class="corps">
+      <p>Observations, interventions, suivis : <strong>nous étudions une façon d'alléger cette tâche</strong> pour le personnel enseignant du primaire.</p>
+      <button class="bouton principal" id="btn-essayer" type="button">Je veux l'essayer</button>
+      <p class="doux petit" style="margin:12px 0 0">Projet de maîtrise pour le cours « Méthodologie d'ingénierie créative : pensée design », École de technologie supérieure (ÉTS). Rien à vendre.</p>
+    </div>
   </section>
 
   <!-- ② Geste -->
   <section class="ecran" id="ecran-2" aria-labelledby="t2" hidden>
-    <h2 id="t2" tabindex="-1">Deux questions, et c'est tout</h2>
+    <div class="tete-geste">
+      <svg class="chrono" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="27" y="2" width="10" height="7" rx="2" fill="#553B28"/>
+        <circle cx="32" cy="36" r="24" fill="#FFF8EE" stroke="#553B28" stroke-width="3"/>
+        <g stroke="#94755A" stroke-width="2" stroke-linecap="round">
+          <line x1="32" y1="15" x2="32" y2="19"/>
+          <line x1="53" y1="36" x2="49" y2="36"/>
+          <line x1="32" y1="57" x2="32" y2="53"/>
+          <line x1="11" y1="36" x2="15" y2="36"/>
+        </g>
+        <line class="aiguille" x1="32" y1="36" x2="32" y2="17" stroke="#1F3A8A" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="32" cy="36" r="3" fill="#553B28"/>
+      </svg>
+      <h2 id="t2" tabindex="-1">Deux questions, et c'est tout</h2>
+    </div>
+
+    <div class="progression" aria-live="polite">
+      <div class="progression-etiquette"><span id="etape">Question 1 de 2</span><span>environ 30 secondes</span></div>
+      <div class="progression-barre"><span class="fait"></span><span id="barre-2"></span></div>
+    </div>
 
     <fieldset>
       <legend>Quel est votre rôle ?</legend>
@@ -283,6 +343,7 @@
     for (var i = 1; i <= 5; i += 1) {
       document.getElementById('ecran-' + i).hidden = (i !== n);
     }
+    document.getElementById('ecran-' + n).classList.add('entree');
     window.scrollTo(0, 0);
     var titre = document.getElementById('t' + n);
     if (titre) { titre.focus({ preventScroll: true }); }
@@ -297,13 +358,15 @@
     afficher(2);
   });
 
-  // ② Geste : le rôle débloque les trois choix.
+  // ② Geste : le rôle débloque les trois choix et fait avancer la progression.
   var boutonsChoix = document.querySelectorAll('[data-choix]');
   document.querySelectorAll('input[name="role"]').forEach(function (radio) {
     radio.addEventListener('change', function () {
       etat.role = radio.value;
       boutonsChoix.forEach(function (b) { b.disabled = false; });
       document.getElementById('aide-role').hidden = true;
+      document.getElementById('etape').textContent = 'Question 2 de 2';
+      document.getElementById('barre-2').classList.add('fait');
     });
   });
   boutonsChoix.forEach(function (bouton) {
